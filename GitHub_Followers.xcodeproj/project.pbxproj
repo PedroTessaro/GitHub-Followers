@@ -14,7 +14,6 @@
 		C74057252F30D2EE0018452F /* Exceptions for "GitHub_Followers" folder in "GitHub_Followers" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
 				Info.plist,
 			);
 			target = C74057122F30D2EE0018452F /* GitHub_Followers */;
