@@ -1,5 +1,5 @@
 //
-//  GFTittleLabel.swift
+//  GFTitleLabel.swift
 //  GitHub_Followers
 //
 //  Created by Pedro Augusto on 04/02/26.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GFTittleLabel: UILabel {
+class GFTitleLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
