@@ -14,7 +14,7 @@
 		C74057252F30D2EE0018452F /* Exceptions for "GitHub_Followers" folder in "GitHub_Followers" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Support/Info.plist,
 			);
 			target = C74057122F30D2EE0018452F /* GitHub_Followers */;
 		};
@@ -147,7 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V2DATBMVMD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHub_Followers/Info.plist;
+				INFOPLIST_FILE = GitHub_Followers/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -182,7 +182,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V2DATBMVMD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHub_Followers/Info.plist;
+				INFOPLIST_FILE = GitHub_Followers/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
