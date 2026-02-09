@@ -36,6 +36,7 @@ class GFEmptyStateView: UIView {
         messageLabel.textColor      = .secondaryLabel
         
         logoImageView.image = UIImage(named: "empty-state-logo")!
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150),
@@ -45,8 +46,8 @@ class GFEmptyStateView: UIView {
             
             logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
             logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 200),
-            logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 140)
+            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 230),
+            logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 80)
         ])
     }
 }
