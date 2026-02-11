@@ -1,5 +1,5 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GitHub_Followers
 //
 //  Created by Pedro Augusto on 05/02/26.
