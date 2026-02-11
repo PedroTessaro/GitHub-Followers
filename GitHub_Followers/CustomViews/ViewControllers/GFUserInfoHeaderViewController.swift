@@ -22,6 +22,7 @@ class GFUserInfoHeaderViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         layoutUI()
+        configureUIElements()
     }
     
     init(user: User) {
@@ -36,13 +37,14 @@ class GFUserInfoHeaderViewController: UIViewController {
     
     private func configureUIElements() {
         avatarImageView.downloadImage(from: user.avatarUrl)
-        usernameLabel.text      = user.login
-        nameLabel.text          = user.name ?? ""
-        locationLabel.text      = user.location ?? "No location"
-        bioLabel.text           = user.bio ?? "No bio available"
-        bioLabel.numberOfLines  = 3
+        usernameLabel.text          = user.login
+        nameLabel.text              = user.name ?? ""
+        locationLabel.text          = user.location ?? "No location"
+        bioLabel.text               = user.bio ?? "No bio available"
+        bioLabel.numberOfLines      = 3
         
-        locationImageView.image = UIImage(systemName: "mappin.and.ellipse")
+        locationImageView.image     = UIImage(systemName: SFSymbols.location)
+        locationImageView.tintColor = .secondaryLabel
     }
     
     
@@ -50,6 +52,7 @@ class GFUserInfoHeaderViewController: UIViewController {
         view.addSubview(avatarImageView)
         view.addSubview(usernameLabel)
         view.addSubview(nameLabel)
+        view.addSubview(locationImageView)
         view.addSubview(locationLabel)
         view.addSubview(bioLabel)
     }
@@ -82,7 +85,7 @@ class GFUserInfoHeaderViewController: UIViewController {
             locationImageView.heightAnchor.constraint(equalToConstant: 20),
             
             locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor),
-            locationLabel.leadingAnchor.constraint(equalTo: locationImageView.leadingAnchor, constant: 5),
+            locationLabel.leadingAnchor.constraint(equalTo: locationImageView.leadingAnchor, constant: 30),
             locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             locationLabel.heightAnchor.constraint(equalToConstant: 20),
             
