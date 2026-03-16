@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import SafariServices
+
+protocol UserInfoViewControllerDelegate: AnyObject {
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
 
 class UserInfoViewController: UIViewController {
     
@@ -38,16 +44,26 @@ class UserInfoViewController: UIViewController {
             
             switch result {
             case .success(let user):
-                DispatchQueue.main.async {
-                    self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-                    self.add(childViewController: GFRepoItemViewController(user: user), to: self.itemViewOne)
-                    self.add(childViewController: GFFollowerItemViewController(user: user), to: self.itemViewTwo)
-                    self.dateLabel.text = user.createdAt
-                }
+                DispatchQueue.main.async { self.configureUIElements(with: user) }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+    
+    
+    func configureUIElements(with user: User) {
+        let repoItemVC          = GFRepoItemViewController(user: user)
+        repoItemVC.delegate     = self
+        
+        let followerItemVC      = GFFollowerItemViewController(user: user)
+        followerItemVC.delegate = self
+        
+        self.add(childViewController: repoItemVC, to: self.itemViewOne)
+        self.add(childViewController: followerItemVC, to: self.itemViewTwo)
+        self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+        
+        self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
     }
     
     
@@ -66,7 +82,7 @@ class UserInfoViewController: UIViewController {
                 itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             ])
         }
-                
+        
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
@@ -94,5 +110,22 @@ class UserInfoViewController: UIViewController {
     @objc
     private func dismissViewController() {
         dismiss(animated: true)
+    }
+}
+
+
+extension UserInfoViewController: UserInfoViewControllerDelegate {
+    func didTapGitHubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid.", buttonTitle: "Ok")
+            return
+        }
+        
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        print("Tapped the Get Followers button")
     }
 }
